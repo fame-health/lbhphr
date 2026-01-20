@@ -623,7 +623,7 @@ select:focus {
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4 class="font-bold text-primary mb-1 text-sm">Kantor LBHPHR Riau</h4>
-                                <p class="text-xs text-gray-600 leading-relaxed">Jl. Jenderal Sudirman No. 123, Pekanbaru, Riau 28131, Indonesia</p>
+                                <p class="text-xs text-gray-600 leading-relaxed">Jl. Meranti, No. 46, Kelurahan Labuh Baru Timur, Kecamatan Payung Sekaki, Kota Pekanbaru, Provinsi Riau</p>
                             </div>
                         </div>
                     </div>
@@ -648,7 +648,7 @@ select:focus {
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4 class="font-bold text-primary mb-1 text-sm">Email Resmi</h4>
-                                <p class="text-xs text-gray-600 break-all">info@lbhphr.com</p>
+                                <p class="text-xs text-gray-600 break-all">pengacaraparlindungan@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -794,7 +794,7 @@ select:focus {
                     <ul class="space-y-4 text-gray-400 text-sm">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                            Jl. Jenderal Sudirman No. 123, Pekanbaru, Riau 28131
+                            Jl. Meranti, No. 46, Kelurahan Labuh Baru Timur, Kecamatan Payung Sekaki, Kota Pekanbaru, Provinsi Riau
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone-alt text-accent mr-3"></i>
