@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Rantangan Ramadhan 1447 H</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background-color: #16a34a;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .download-btn {
+            background-color: white;
+            color: #16a34a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #e5e7eb;
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid #d1d5db;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .day-number {
+            text-align: center;
+            font-weight: bold;
+            background-color: #fef3c7;
+            vertical-align: middle;
+        }
+
+        .date-row {
+            background-color: #fef3c7;
+        }
+
+        .date-cell {
+            font-weight: 500;
+        }
+
+        .weekday-cell {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            padding: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            background-color: #f0fdf4;
+        }
+
+        .footer {
+            padding: 15px;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Tabel Rantangan Ramadhan 1447 H</h1>
+            <button class="download-btn" onclick="downloadCSV()">📥 Download CSV</button>
+        </div>
+
+        <table id="rantanganTable">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">A</th>
+                    <th style="width: 250px;">B</th>
+                    <th style="width: 120px;">C</th>
+                    <th>D</th>
+                    <th style="width: 80px;">E</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="footer">
+            Isi menu untuk setiap hari, lalu klik "Download CSV" untuk membuka di Excel
+        </div>
+    </div>
+
+    <script>
+        const ramadhanData = [
+            { day: 1, date: '1 Ramadhan 1447', weekday: 'Minggu' },
+            { day: 2, date: '2 Ramadhan 1447', weekday: 'Senin' },
+            { day: 3, date: '3 Ramadhan 1447', weekday: 'Selasa' },
+            { day: 4, date: '4 Ramadhan 1447', weekday: 'Rabu' },
+            { day: 5, date: '5 Ramadhan 1447', weekday: 'Kamis' },
+            { day: 6, date: '6 Ramadhan 1447', weekday: 'Jumat' },
+            { day: 7, date: '7 Ramadhan 1447', weekday: 'Sabtu' },
+            { day: 8, date: '8 Ramadhan 1447', weekday: 'Minggu' },
+            { day: 9, date: '9 Ramadhan 1447', weekday: 'Senin' },
+            { day: 10, date: '10 Ramadhan 1447', weekday: 'Selasa' },
+            { day: 11, date: '11 Ramadhan 1447', weekday: 'Rabu' },
+            { day: 12, date: '12 Ramadhan 1447', weekday: 'Kamis' },
+            { day: 13, date: '13 Ramadhan 1447', weekday: 'Jumat' },
+            { day: 14, date: '14 Ramadhan 1447', weekday: 'Sabtu' },
+            { day: 15, date: '15 Ramadhan 1447', weekday: 'Minggu' },
+            { day: 16, date: '16 Ramadhan 1447', weekday: 'Senin' },
+            { day: 17, date: '17 Ramadhan 1447', weekday: 'Selasa' },
+            { day: 18, date: '18 Ramadhan 1447', weekday: 'Rabu' },
+            { day: 19, date: '19 Ramadhan 1447', weekday: 'Kamis' },
+            { day: 20, date: '20 Ramadhan 1447', weekday: 'Jumat' },
+            { day: 21, date: '21 Ramadhan 1447', weekday: 'Sabtu' },
+            { day: 22, date: '22 Ramadhan 1447', weekday: 'Minggu' },
+            { day: 23, date: '23 Ramadhan 1447', weekday: 'Senin' },
+            { day: 24, date: '24 Ramadhan 1447', weekday: 'Selasa' },
+            { day: 25, date: '25 Ramadhan 1447', weekday: 'Rabu' },
+            { day: 26, date: '26 Ramadhan 1447', weekday: 'Kamis' },
+            { day: 27, date: '27 Ramadhan 1447', weekday: 'Jumat' },
+            { day: 28, date: '28 Ramadhan 1447', weekday: 'Sabtu' },
+            { day: 29, date: '29 Ramadhan 1447', weekday: 'Minggu' },
+            { day: 30, date: '30 Ramadhan 1447', weekday: 'Senin' }
+        ];
+
+        function createTable() {
+            const tbody = document.getElementById('tableBody');
+
+            ramadhanData.forEach((item, index) => {
+                // Baris 1: Header dengan tanggal dan hari
+                const row1 = document.createElement('tr');
+                row1.className = 'date-row';
+                row1.innerHTML = `
+                    <td class="day-number" rowspan="4">${item.day}</td>
+                    <td class="date-cell" colspan="2">${item.date}</td>
+                    <td class="weekday-cell">${item.weekday}</td>
+                    <td></td>
+                `;
+                tbody.appendChild(row1);
+
+                // Baris 2-4: Input menu
+                for (let i = 1; i <= 3; i++) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td colspan="4">
+                            <input type="text" id="menu_${index}_${i}" placeholder="Menu ${i}">
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            });
+        }
+
+        function downloadCSV() {
+            const rows = [];
+
+            // Header
+            rows.push(['A', 'B', 'C', 'D', 'E'].join(','));
+
+            // Data
+            ramadhanData.forEach((item, index) => {
+                // Baris header tanggal
+                rows.push([item.day, item.date, item.weekday, '', ''].join(','));
+
+                // Baris menu 1-3
+                for (let i = 1; i <= 3; i++) {
+                    const menuValue = document.getElementById(`menu_${index}_${i}`).value || '';
+                    rows.push(['', menuValue, '', '', ''].join(','));
+                }
+            });
+
+            const csvContent = rows.join('\n');
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Tabel_Rantangan_Ramadhan_1447H.csv';
+            link.click();
+        }
+
+        // Buat tabel saat halaman dimuat
+        createTable();
+    </script>
+</body>
+</html>
